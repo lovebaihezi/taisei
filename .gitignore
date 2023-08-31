@@ -15,3 +15,7 @@ __pycache__
 *-autosave.kra
 *.swp
 .VERSION
+mimalloc-build
+subprojects/mimalloc*
+.cache
+compile_commands.json
