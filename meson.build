@@ -203,10 +203,6 @@ opt_vfs_zip = get_option('vfs_zip').require(host_machine.system() != 'emscripten
 
 add_global_arguments('-DSPRITE_BATCH_STATS=1', language : 'c')
 
-
-wget_job = run_command('wget', 'https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz', '--output-document=./subprojects/mimalloc.tar.gz', check: true)
-tar_job = run_command('tar', 'xf', './subprojects/mimalloc.tar.gz', '-C', './subprojects', check: true)
-
 cmake = import('cmake')
 
 mimalloc = cmake.subproject('mimalloc-2.1.2')

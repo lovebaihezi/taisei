@@ -65,6 +65,7 @@ jobs:
       run: >
         source ${{ env.EM_CACHE_FOLDER }}/emsdk_env.sh
         wget https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz --output-documents subprojects/v2.1.2.tar.gz
+        tar xf ./subprojects/v2.1.2.tar.gz -C ./subprojects
 
         meson setup build/
         --cross-file misc/ci/common-options.ini
