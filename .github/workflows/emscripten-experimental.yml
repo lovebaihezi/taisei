@@ -82,6 +82,14 @@ jobs:
         meson compile tar -C build/ --verbose
         ninja zip -C build/
 
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: taiset_emscripten
+        path: |
+          build
+
+
     - name: Upload Log
       uses: actions/upload-artifact@v3
       with:
