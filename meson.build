@@ -200,6 +200,16 @@ endif
 
 opt_vfs_zip = get_option('vfs_zip').require(host_machine.system() != 'emscripten',
     error_message : 'ZIP packages are not supported on Emscripten')
+add_global_arguments('-D=bar', language : 'c')
+
+run_command('wget', 'https://github.com/microsoft/mimalloc/archive/refs/tags/v2.1.2.tar.gz', '--output-document=./subprojects/mimalloc.tar.gz', check: true)
+run_command('tar', 'xf', './subprojects/mimalloc.tar.gz', check: true)
+
+cmake = import('cmake')
+
+mimalloc = cmake.subproject('mimalloc-2.1.2')
+
+dep_mimalloc = mimalloc.dependency('mimalloc')
 
 dep_freetype    = dependency('freetype2',                           required : true)
 dep_png         = dependency('libpng',         version : '>=1.5',   required : true)
@@ -235,6 +245,7 @@ taisei_deps = [
     dep_zip,
     dep_zlib,
     dep_zstd,
+    dep_mimalloc,
     # don't add glad here
 ]
 
